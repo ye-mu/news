@@ -23,7 +23,27 @@
   <body>
 
     <div class="container mt-5">
-      <h1>News</h1>
+      <h1>News Today</h1>
+      <h4>
+       <%= "<em>It is currently #{@forecast["current"]["temp"]} degrees and #{@forecast["current"]["weather"][0]["description"]} <em>" %>
+      </h4>
+      <p>
+      <% for article in @news["articles"] %>
+        <li> <%="<strong> #{article["title"]} </strong>, <em> from #{article["url"]} </em>" %> </li>
+      <% end %>
+      </P>
+
+      <hr>
+      <h5> For incoming days, we have high temperature and weather as follows: </h5>
+      <p> <ul>
+      <% for day in @forecast["daily"] %>
+        <li> <%="A high of #{day["temp"]["max"]} degrees and #{day["weather"][0]["description"]}" %> </li>
+      <% end %>
+      </ul> </p>
+      <p>
+      <hr>
+       <a href="/" class="btn btn-success">Refresh Page</a>
+      </p>
     </div>
 
     <!-- Optional JavaScript -->
